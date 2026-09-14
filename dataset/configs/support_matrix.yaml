@@ -1,0 +1,18 @@
+{
+  "assignment": "balanced_latin_square",
+  "support_levels": [0, 1, 5, 20, 100, 500],
+  "shape_order": ["circle", "square", "triangle", "diamond", "cross", "star"],
+  "matrix": {
+    "red":    [0, 1, 5, 20, 100, 500],
+    "blue":   [500, 0, 1, 5, 20, 100],
+    "green":  [100, 500, 0, 1, 5, 20],
+    "yellow": [20, 100, 500, 0, 1, 5],
+    "gray":   [5, 20, 100, 500, 0, 1],
+    "purple": [1, 5, 20, 100, 500, 0]
+  },
+  "expected": {
+    "concept_count": 36,
+    "concepts_per_support_level": 6,
+    "generator_train_samples": 3756
+  }
+}

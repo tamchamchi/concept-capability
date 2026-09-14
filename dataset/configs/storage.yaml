@@ -1,0 +1,12 @@
+{
+  "data_root": "/mnt/mmlab2024nas/anhndt/concept-capability-dataset",
+  "local_symlink": "data",
+  "directories": {
+    "master": "master",
+    "generator_train": "generator_train",
+    "generator_test": "generator_test",
+    "evaluator_train": "evaluator_train",
+    "evaluator_val": "evaluator_val",
+    "visualizations": "visualizations"
+  }
+}

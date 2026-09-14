@@ -1,0 +1,70 @@
+{
+  "dataset_name": "Shapes32-Recoverability",
+  "dataset_version": "0.1.0",
+  "dataset_seed": 20260914,
+  "image": {
+    "width": 32,
+    "height": 32,
+    "channels": 3,
+    "mode": "RGB"
+  },
+  "colors": [
+    {"id": 0, "name": "red",    "rgb": [230, 30, 30]},
+    {"id": 1, "name": "blue",   "rgb": [30, 80, 230]},
+    {"id": 2, "name": "green",  "rgb": [30, 200, 60]},
+    {"id": 3, "name": "yellow", "rgb": [230, 220, 40]},
+    {"id": 4, "name": "gray",   "rgb": [140, 140, 140]},
+    {"id": 5, "name": "purple", "rgb": [150, 60, 190]}
+  ],
+  "shapes": [
+    {"id": 0, "name": "circle"},
+    {"id": 1, "name": "square"},
+    {"id": 2, "name": "triangle"},
+    {"id": 3, "name": "diamond"},
+    {"id": 4, "name": "cross"},
+    {"id": 5, "name": "star"}
+  ],
+  "concepts": [
+    {"id": "red_circle", "color": "red", "shape": "circle"},
+    {"id": "red_square", "color": "red", "shape": "square"},
+    {"id": "red_triangle", "color": "red", "shape": "triangle"},
+    {"id": "red_diamond", "color": "red", "shape": "diamond"},
+    {"id": "red_cross", "color": "red", "shape": "cross"},
+    {"id": "red_star", "color": "red", "shape": "star"},
+
+    {"id": "blue_circle", "color": "blue", "shape": "circle"},
+    {"id": "blue_square", "color": "blue", "shape": "square"},
+    {"id": "blue_triangle", "color": "blue", "shape": "triangle"},
+    {"id": "blue_diamond", "color": "blue", "shape": "diamond"},
+    {"id": "blue_cross", "color": "blue", "shape": "cross"},
+    {"id": "blue_star", "color": "blue", "shape": "star"},
+
+    {"id": "green_circle", "color": "green", "shape": "circle"},
+    {"id": "green_square", "color": "green", "shape": "square"},
+    {"id": "green_triangle", "color": "green", "shape": "triangle"},
+    {"id": "green_diamond", "color": "green", "shape": "diamond"},
+    {"id": "green_cross", "color": "green", "shape": "cross"},
+    {"id": "green_star", "color": "green", "shape": "star"},
+
+    {"id": "yellow_circle", "color": "yellow", "shape": "circle"},
+    {"id": "yellow_square", "color": "yellow", "shape": "square"},
+    {"id": "yellow_triangle", "color": "yellow", "shape": "triangle"},
+    {"id": "yellow_diamond", "color": "yellow", "shape": "diamond"},
+    {"id": "yellow_cross", "color": "yellow", "shape": "cross"},
+    {"id": "yellow_star", "color": "yellow", "shape": "star"},
+
+    {"id": "gray_circle", "color": "gray", "shape": "circle"},
+    {"id": "gray_square", "color": "gray", "shape": "square"},
+    {"id": "gray_triangle", "color": "gray", "shape": "triangle"},
+    {"id": "gray_diamond", "color": "gray", "shape": "diamond"},
+    {"id": "gray_cross", "color": "gray", "shape": "cross"},
+    {"id": "gray_star", "color": "gray", "shape": "star"},
+
+    {"id": "purple_circle", "color": "purple", "shape": "circle"},
+    {"id": "purple_square", "color": "purple", "shape": "square"},
+    {"id": "purple_triangle", "color": "purple", "shape": "triangle"},
+    {"id": "purple_diamond", "color": "purple", "shape": "diamond"},
+    {"id": "purple_cross", "color": "purple", "shape": "cross"},
+    {"id": "purple_star", "color": "purple", "shape": "star"}
+  ]
+}

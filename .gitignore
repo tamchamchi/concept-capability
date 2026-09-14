@@ -1,0 +1,44 @@
+# Python bytecode and test/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local environment variables
+.venv/
+venv/
+env/
+.env
+
+# Generated datasets live on the NAS through the local data symlink.
+/data
+/data/
+/dataset/master/
+/dataset/generator_train/
+/dataset/generator_test/
+/dataset/evaluator_train/
+/dataset/evaluator_val/
+/dataset/visualizations/
+
+# Generated experiment artifacts
+/outputs/
+/runs/
+/checkpoints/
+/logs/
+*.ckpt
+*.pth
+*.pt
+
+# One-off renderer previews saved at the repository root
+/*.png
+/*.jpg
+/*.jpeg
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+*~

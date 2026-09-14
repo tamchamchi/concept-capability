@@ -1,0 +1,70 @@
+{
+  "image_size": 32,
+  "background_rgb": [0, 0, 0],
+  "supersampling_factor": 4,
+  "downsampling_filter": "lanczos",
+  "instance_distribution": {
+    "scope": "global_for_all_concepts_and_support_levels",
+    "position": {
+      "center_x": {"distribution": "uniform", "min": 10.0, "max": 22.0},
+      "center_y": {"distribution": "uniform", "min": 10.0, "max": 22.0},
+      "boundary_policy": "resample_until_fully_visible",
+      "canvas_padding": 1.0,
+      "max_resample_attempts": 100
+    },
+    "size": {
+      "distribution": "uniform",
+      "min": 6.0,
+      "max": 10.0,
+      "meaning": {
+        "circle": "radius",
+        "square": "half_width",
+        "triangle": "circumradius",
+        "diamond": "circumradius",
+        "cross": "outer_radius",
+        "star": "outer_radius"
+      }
+    },
+    "rotation_degrees": {
+      "circle": {"distribution": "constant", "value": 0.0},
+      "square": {"distribution": "uniform", "min": -15.0, "max": 15.0},
+      "triangle": {"distribution": "uniform", "min": -15.0, "max": 15.0},
+      "diamond": {"distribution": "uniform", "min": -10.0, "max": 10.0},
+      "cross": {"distribution": "uniform", "min": -10.0, "max": 10.0},
+      "star": {"distribution": "uniform", "min": -15.0, "max": 15.0}
+    },
+    "color_jitter": {
+      "enabled": true,
+      "distribution": "discrete_uniform_per_channel",
+      "min_delta": -10,
+      "max_delta": 10,
+      "clip_rgb_to": [0, 255]
+    },
+    "brightness": {
+      "enabled": true,
+      "distribution": "uniform",
+      "min": 0.9,
+      "max": 1.1
+    }
+  },
+  "diversity_constraint": {
+    "enabled": true,
+    "comparison_scope": "within_concept",
+    "method": "normalized_weighted_parameter_distance",
+    "minimum_distance": 0.08,
+    "weights": {
+      "position": 0.35,
+      "size": 0.25,
+      "rotation": 0.20,
+      "color": 0.20
+    },
+    "recent_sample_window": 100,
+    "max_resample_attempts": 1000
+  },
+  "randomness": {
+    "dataset_seed": 20260914,
+    "sample_rng": "numpy.random.default_rng",
+    "require_unique_renderer_seed": true,
+    "global_random_state_allowed": false
+  }
+}
