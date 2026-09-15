@@ -1079,17 +1079,22 @@ manifest. Exposure/support labels are intentionally absent from master metadata.
 
 ## Phase D — Exposure regimes
 
-- [ ] Define balanced target concepts
-- [ ] Set `N_full`
-- [ ] Build E100
-- [ ] Build E075
-- [ ] Build E050
-- [ ] Build E025
-- [ ] Build E005
-- [ ] Build E000
-- [ ] Keep total N_train constant
-- [ ] Validate redistribution
-- [ ] Validate primitive coverage
+- [x] Define balanced target concepts
+- [x] Set `N_full = 100`
+- [x] Build E100
+- [x] Build E075
+- [x] Build E050
+- [x] Build E025
+- [x] Build E005
+- [x] Build E000
+- [x] Keep total `N_train = 3,600` constant
+- [x] Validate redistribution
+- [x] Validate primitive coverage
+
+The six regimes are deterministic, nested metadata-only views of the master
+pool. The six targets cover every color and shape exactly once. Removed target
+samples are distributed equally across all 30 non-target concepts, preserving
+exact color and shape marginals of `600` samples each in every regime.
 
 ## Phase E — Evaluator
 

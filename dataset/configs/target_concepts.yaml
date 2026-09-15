@@ -1,0 +1,16 @@
+{
+  "experiment": "concept_generalization_v2",
+  "n_full": 100,
+  "total_train_size": 3600,
+  "primitive_min_other_samples": 500,
+  "selection_strategy": "deterministic_nested_master_prefix",
+  "shuffle_strategy": "deterministic_per_regime",
+  "target_concepts": [
+    "red_circle",
+    "green_square",
+    "blue_triangle",
+    "yellow_diamond",
+    "cyan_cross",
+    "magenta_star"
+  ]
+}

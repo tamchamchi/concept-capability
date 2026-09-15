@@ -1,0 +1,16 @@
+{
+  "regime": "E025",
+  "exposure_level": 0.25,
+  "exposure_percent": 25,
+  "target_count": 25,
+  "non_target_count": 115,
+  "non_target_redistribution": {
+    "strategy": "equal_per_non_target_concept",
+    "removed_target_samples": 450,
+    "added_per_non_target_concept": 15
+  },
+  "total_train_size": 3600,
+  "dataset_seed": 20260914,
+  "renderer_config": "renderer_base.yaml",
+  "target_concepts_config": "target_concepts.yaml"
+}
