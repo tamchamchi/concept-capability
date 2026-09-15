@@ -837,12 +837,12 @@ brightness:
 
 ## Phase 1 — Concept specification
 
-- [ ] Define 6 colors
-- [ ] Define 6 shapes
-- [ ] Define 36 concept IDs
-- [ ] Define support levels
-- [ ] Save Latin-square support matrix
-- [ ] Fix dataset seed
+- [x] Define 6 colors
+- [x] Define 6 shapes
+- [x] Define 36 concept IDs
+- [x] Define support levels
+- [x] Save Latin-square support matrix
+- [x] Fix dataset seed
 
 Output:
 
@@ -853,14 +853,14 @@ support_matrix.yaml
 
 ## Phase 2 — Renderer
 
-- [ ] Implement blank canvas
-- [ ] Implement each shape
-- [ ] Implement position sampling
-- [ ] Implement size sampling
-- [ ] Implement rotation
-- [ ] Implement color jitter
-- [ ] Implement metadata return
-- [ ] Make renderer deterministic
+- [x] Implement blank canvas
+- [x] Implement each shape
+- [x] Implement position sampling
+- [x] Implement size sampling
+- [x] Implement rotation
+- [x] Implement color jitter
+- [x] Implement metadata return
+- [x] Make renderer deterministic
 
 Output:
 
@@ -870,12 +870,12 @@ renderer.py
 
 ## Phase 3 — Renderer validation
 
-- [ ] Generate 100 samples/concept
-- [ ] Make concept grid
-- [ ] Inspect boundaries
-- [ ] Check all shapes recognizable
-- [ ] Check all colors recognizable
-- [ ] Adjust rendering ranges
+- [x] Generate 100 samples/concept
+- [x] Make concept grid
+- [x] Inspect boundaries
+- [x] Check all shapes recognizable
+- [x] Check all colors recognizable
+- [x] Review rendering ranges (no adjustment required)
 
 **Do not continue if renderer is not visually clean.**
 

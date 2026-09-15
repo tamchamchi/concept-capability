@@ -24,6 +24,18 @@ def _sample_rotation(
     raise ValueError(f"Unsupported rotation distribution for {shape_name}")
 
 
+def _sample_size(
+    rng: np.random.Generator,
+    distribution_config: Mapping[str, Any],
+) -> float:
+    size_config = distribution_config["size"]
+    if size_config["distribution"] == "constant":
+        return float(size_config["value"])
+    if size_config["distribution"] == "uniform":
+        return float(rng.uniform(size_config["min"], size_config["max"]))
+    raise ValueError("Unsupported size distribution")
+
+
 def _feasible_center_range(
     configured_minimum: float,
     configured_maximum: float,
@@ -55,8 +67,7 @@ def sample_instance_parameters(
     rng = np.random.default_rng(int(renderer_seed))
     distribution = renderer_config["instance_distribution"]
 
-    size_config = distribution["size"]
-    size = float(rng.uniform(size_config["min"], size_config["max"]))
+    size = _sample_size(rng, distribution)
     rotation = _sample_rotation(shape_name, rng, distribution)
 
     left, top, right, bottom = shape_bounds(shape_name, size, rotation)

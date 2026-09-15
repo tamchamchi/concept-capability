@@ -1,6 +1,6 @@
 {
   "dataset_name": "Shapes32-Recoverability",
-  "dataset_version": "0.1.0",
+  "dataset_version": "0.2.0",
   "dataset_seed": 20260914,
   "image": {
     "width": 32,
@@ -13,8 +13,8 @@
     {"id": 1, "name": "blue",   "rgb": [30, 80, 230]},
     {"id": 2, "name": "green",  "rgb": [30, 200, 60]},
     {"id": 3, "name": "yellow", "rgb": [230, 220, 40]},
-    {"id": 4, "name": "gray",   "rgb": [140, 140, 140]},
-    {"id": 5, "name": "purple", "rgb": [150, 60, 190]}
+    {"id": 4, "name": "cyan",    "rgb": [40, 210, 210]},
+    {"id": 5, "name": "magenta", "rgb": [210, 50, 200]}
   ],
   "shapes": [
     {"id": 0, "name": "circle"},
@@ -53,18 +53,18 @@
     {"id": "yellow_cross", "color": "yellow", "shape": "cross"},
     {"id": "yellow_star", "color": "yellow", "shape": "star"},
 
-    {"id": "gray_circle", "color": "gray", "shape": "circle"},
-    {"id": "gray_square", "color": "gray", "shape": "square"},
-    {"id": "gray_triangle", "color": "gray", "shape": "triangle"},
-    {"id": "gray_diamond", "color": "gray", "shape": "diamond"},
-    {"id": "gray_cross", "color": "gray", "shape": "cross"},
-    {"id": "gray_star", "color": "gray", "shape": "star"},
+    {"id": "cyan_circle", "color": "cyan", "shape": "circle"},
+    {"id": "cyan_square", "color": "cyan", "shape": "square"},
+    {"id": "cyan_triangle", "color": "cyan", "shape": "triangle"},
+    {"id": "cyan_diamond", "color": "cyan", "shape": "diamond"},
+    {"id": "cyan_cross", "color": "cyan", "shape": "cross"},
+    {"id": "cyan_star", "color": "cyan", "shape": "star"},
 
-    {"id": "purple_circle", "color": "purple", "shape": "circle"},
-    {"id": "purple_square", "color": "purple", "shape": "square"},
-    {"id": "purple_triangle", "color": "purple", "shape": "triangle"},
-    {"id": "purple_diamond", "color": "purple", "shape": "diamond"},
-    {"id": "purple_cross", "color": "purple", "shape": "cross"},
-    {"id": "purple_star", "color": "purple", "shape": "star"}
+    {"id": "magenta_circle", "color": "magenta", "shape": "circle"},
+    {"id": "magenta_square", "color": "magenta", "shape": "square"},
+    {"id": "magenta_triangle", "color": "magenta", "shape": "triangle"},
+    {"id": "magenta_diamond", "color": "magenta", "shape": "diamond"},
+    {"id": "magenta_cross", "color": "magenta", "shape": "cross"},
+    {"id": "magenta_star", "color": "magenta", "shape": "star"}
   ]
 }

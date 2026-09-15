@@ -1,0 +1,71 @@
+{
+  "profile": "concept_generalization_base_c0",
+  "image_size": 32,
+  "background_rgb": [0, 0, 0],
+  "supersampling_factor": 4,
+  "downsampling_filter": "lanczos",
+  "instance_distribution": {
+    "scope": "global_for_all_concepts_and_exposure_regimes",
+    "position": {
+      "center_x": {"distribution": "uniform", "min": 10.0, "max": 22.0},
+      "center_y": {"distribution": "uniform", "min": 10.0, "max": 22.0},
+      "boundary_policy": "sample_from_shape_safe_range",
+      "canvas_padding": 1.0
+    },
+    "size": {
+      "distribution": "constant",
+      "value": 8.0,
+      "meaning": {
+        "circle": "radius",
+        "square": "half_width",
+        "triangle": "circumradius",
+        "diamond": "circumradius",
+        "cross": "outer_radius",
+        "star": "outer_radius"
+      }
+    },
+    "rotation_degrees": {
+      "circle": {"distribution": "constant", "value": 0.0},
+      "square": {"distribution": "constant", "value": 0.0},
+      "triangle": {"distribution": "constant", "value": 0.0},
+      "diamond": {"distribution": "constant", "value": 0.0},
+      "cross": {"distribution": "constant", "value": 0.0},
+      "star": {"distribution": "constant", "value": 0.0}
+    },
+    "color_jitter": {
+      "enabled": false,
+      "distribution": "constant_per_channel",
+      "value": 0,
+      "min_delta": 0,
+      "max_delta": 0,
+      "clip_rgb_to": [0, 255]
+    },
+    "brightness": {
+      "enabled": false,
+      "distribution": "constant",
+      "value": 1.0,
+      "min": 1.0,
+      "max": 1.0
+    }
+  },
+  "diversity_constraint": {
+    "enabled": true,
+    "comparison_scope": "within_concept",
+    "method": "normalized_weighted_parameter_distance",
+    "minimum_distance": 0.04,
+    "weights": {
+      "position": 1.0,
+      "size": 0.0,
+      "rotation": 0.0,
+      "color": 0.0
+    },
+    "recent_sample_window": 100,
+    "max_resample_attempts": 1000
+  },
+  "randomness": {
+    "dataset_seed": 20260914,
+    "sample_rng": "numpy.random.default_rng",
+    "require_unique_renderer_seed": true,
+    "global_random_state_allowed": false
+  }
+}

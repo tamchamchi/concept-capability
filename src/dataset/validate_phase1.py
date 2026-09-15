@@ -77,17 +77,23 @@ def validate_support(
     assert sum(value for row in matrix.values() for value in row) == 3756
 
 
-def validate_renderer(config: dict[str, Any]) -> None:
+def validate_renderer(config: dict[str, Any], *, base_profile: bool = False) -> None:
     assert config["image_size"] == 32
     distribution = config["instance_distribution"]
-    assert distribution["scope"] == "global_for_all_concepts_and_support_levels"
+    assert distribution["scope"] in {
+        "global_for_all_concepts_and_support_levels",
+        "global_for_all_concepts_and_exposure_regimes",
+    }
 
     for axis in ("center_x", "center_y"):
         bounds = distribution["position"][axis]
         assert 0 <= bounds["min"] < bounds["max"] < config["image_size"]
 
     size = distribution["size"]
-    assert 0 < size["min"] < size["max"]
+    if size["distribution"] == "constant":
+        assert size["value"] > 0
+    else:
+        assert 0 < size["min"] < size["max"]
     assert set(distribution["rotation_degrees"]) == {
         "circle", "square", "triangle", "diamond", "cross", "star"
     }
@@ -98,17 +104,37 @@ def validate_renderer(config: dict[str, Any]) -> None:
     assert math.isclose(sum(diversity["weights"].values()), 1.0)
     assert 0 < diversity["minimum_distance"] < 1
 
+    if base_profile:
+        assert config["profile"] == "concept_generalization_base_c0"
+        assert size["distribution"] == "constant"
+        assert size["value"] == 8.0
+        assert all(
+            rotation == {"distribution": "constant", "value": 0.0}
+            for rotation in distribution["rotation_degrees"].values()
+        )
+        assert distribution["color_jitter"]["enabled"] is False
+        assert distribution["brightness"]["enabled"] is False
+        assert diversity["weights"] == {
+            "position": 1.0,
+            "size": 0.0,
+            "rotation": 0.0,
+            "color": 0.0,
+        }
+
 
 def main() -> None:
     concepts = load_yaml_compatible_json("concepts.yaml")
     support = load_yaml_compatible_json("support_matrix.yaml")
     renderer = load_yaml_compatible_json("renderer.yaml")
+    base_renderer = load_yaml_compatible_json("renderer_base.yaml")
 
     color_names, shape_names = validate_concepts(concepts)
     validate_support(support, color_names, shape_names)
     validate_renderer(renderer)
+    validate_renderer(base_renderer, base_profile=True)
     print("Phase 1 configuration is valid: 6 colors, 6 shapes, 36 concepts.")
     print("Support is balanced: 6 concepts per level, 3,756 training samples.")
+    print("Base renderer is valid: fixed size/rotation/color; random position only.")
 
 
 if __name__ == "__main__":

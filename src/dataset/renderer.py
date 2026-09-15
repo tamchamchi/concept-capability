@@ -18,6 +18,7 @@ from .shapes import SUPPORTED_SHAPES, draw_shape_mask
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG_DIR = PROJECT_ROOT / "dataset" / "configs"
+DEFAULT_RENDERER_CONFIG = DEFAULT_CONFIG_DIR / "renderer_base.yaml"
 
 
 def load_config(path: str | Path) -> dict[str, Any]:
@@ -58,7 +59,11 @@ def render_sample(
 
     Identical arguments and configuration always yield identical pixels and metadata.
     """
-    renderer_config = _resolve_config(config, "renderer.yaml")
+    renderer_config = (
+        load_config(DEFAULT_RENDERER_CONFIG)
+        if config is None
+        else _resolve_config(config, "renderer_base.yaml")
+    )
     concept_spec = _resolve_config(concepts_config, "concepts.yaml")
     support_spec = _resolve_config(support_config, "support_matrix.yaml")
 
