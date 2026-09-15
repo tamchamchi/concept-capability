@@ -88,7 +88,7 @@ def _make_all_concepts_sheet(
 
 def generate(
     output_root: Path,
-    samples_per_concept: int = 100,
+    samples_per_concept: int = 500,
     renderer_config_path: Path = DEFAULT_RENDERER_CONFIG,
 ) -> dict[str, Any]:
     concepts_config = load_config(DEFAULT_CONFIG_DIR / "concepts.yaml")
@@ -125,7 +125,10 @@ def generate(
         seed_stream = _seed_stream(concepts_config["dataset_seed"], concept_id)
         accepted_metadata: list[dict[str, Any]] = []
         accepted_samples: list[tuple[Image.Image, dict[str, Any]]] = []
+        accepted_hashes: set[str] = set()
         attempts = 0
+        similarity_rejections = 0
+        duplicate_rejections = 0
 
         while len(accepted_samples) < samples_per_concept:
             attempts += 1
@@ -140,6 +143,10 @@ def generate(
                 metadata, accepted_metadata, concept["shape"], renderer_config
             )
             if distance < threshold:
+                similarity_rejections += 1
+                continue
+            if metadata["image_sha256"] in accepted_hashes:
+                duplicate_rejections += 1
                 continue
 
             sample_index = len(accepted_samples)
@@ -156,6 +163,7 @@ def generate(
             )
             accepted_metadata.append(metadata)
             accepted_samples.append((image, metadata))
+            accepted_hashes.add(metadata["image_sha256"])
             all_metadata.append(metadata)
 
         representative_samples[concept_id] = accepted_samples[samples_per_concept // 2]
@@ -170,7 +178,8 @@ def generate(
         audit["concepts"][concept_id] = {
             "count": len(accepted_samples),
             "candidate_attempts": attempts,
-            "rejected_for_similarity": attempts - len(accepted_samples),
+            "rejected_for_similarity": similarity_rejections,
+            "rejected_for_duplicate": duplicate_rejections,
             "minimum_accepted_distance": min(distances),
             "center_x_std": statistics.pstdev(item["center_x"] for item in accepted_metadata),
             "center_y_std": statistics.pstdev(item["center_y"] for item in accepted_metadata),
@@ -224,7 +233,7 @@ def main() -> None:
     default_output = Path(storage_config["data_root"]) / storage_config["directories"]["renderer_validation"]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-root", type=Path, default=default_output)
-    parser.add_argument("--samples-per-concept", type=int, default=100)
+    parser.add_argument("--samples-per-concept", type=int, default=500)
     parser.add_argument(
         "--renderer-config",
         type=Path,

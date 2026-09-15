@@ -550,12 +550,12 @@ phải giống nhau cho mọi concept và mọi exposure regime.
 
 Tạo master pool độc lập với exposure assignment.
 
-Khuyến nghị:
+Quy mô đã chốt cho baseline:
 
 ```text
-1000 instances / concept
+500 instances / concept
 36 concepts
-= 36,000 images
+= 18,000 images
 ```
 
 Master pool dùng cho:
@@ -1064,13 +1064,18 @@ Frozen Base profile: `concept_generalization_base_c0` in
 `dataset/configs/renderer_base.yaml`. The within-concept diversity threshold is
 `0.04` over normalized position distance; this rejects near-identical positions
 while remaining feasible when position is the only varying nuisance factor.
+The frozen validation set contains `500 samples/concept` (`18,000` images total).
 
 ## Phase C — Master pool
 
-- [ ] Generate master pool
-- [ ] Hash check
-- [ ] Save metadata
-- [ ] Validate renderer distribution
+- [x] Generate master pool (`500 samples/concept`, `18,000` images)
+- [x] Hash check
+- [x] Save metadata (CSV + Parquet)
+- [x] Validate renderer distribution
+
+The master pool is exposure-independent, uses a dedicated deterministic seed
+namespace, and stores frozen concept/renderer config snapshots plus a checksum
+manifest. Exposure/support labels are intentionally absent from master metadata.
 
 ## Phase D — Exposure regimes
 
