@@ -1098,10 +1098,16 @@ exact color and shape marginals of `600` samples each in every regime.
 
 ## Phase E — Evaluator
 
-- [ ] Build balanced evaluator dataset
-- [ ] Implement/train evaluator
-- [ ] Validate >99% on synthetic held-out test if feasible
+- [x] Build balanced evaluator dataset
+- [ ] Train evaluator on Colab (dual-head CNN and end-to-end pipeline implemented)
+- [ ] Validate learned evaluator >99% on synthetic held-out test
+- [x] Rule-based cross-check: 100% joint accuracy on held-out renderer test
 - [ ] Inspect generated-image robustness later
+
+Evaluator allocation from the 500-sample master pool is leakage-free and
+balanced: `280 train + 50 validation + 50 test` samples per concept, after a
+reserved 120-sample generator prefix. Colab execution instructions are in
+`docs/run_evaluator_on_colab.md`.
 
 ## Phase F — Diffusion baseline
 

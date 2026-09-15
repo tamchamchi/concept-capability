@@ -5,6 +5,7 @@
     "renderer_validation": "renderer_validation",
     "master": "master",
     "concept_generalization": "concept_generalization",
+    "evaluator": "evaluator",
     "generator_train": "generator_train",
     "generator_test": "generator_test",
     "evaluator_train": "evaluator_train",

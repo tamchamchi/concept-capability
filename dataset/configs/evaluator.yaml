@@ -1,0 +1,34 @@
+{
+  "name": "shape_color_dual_head_evaluator",
+  "dataset_seed": 20260914,
+  "master_samples_per_concept": 500,
+  "reserved_generator_prefix": 120,
+  "splits": {
+    "train": {"start": 120, "stop": 400, "samples_per_concept": 280},
+    "val": {"start": 400, "stop": 450, "samples_per_concept": 50},
+    "test": {"start": 450, "stop": 500, "samples_per_concept": 50}
+  },
+  "model": {
+    "architecture": "small_cnn_dual_head",
+    "shape_classes": 6,
+    "color_classes": 6,
+    "input_size": 32,
+    "input_channels": 3
+  },
+  "training": {
+    "seed": 20260915,
+    "epochs": 20,
+    "minimum_epochs": 6,
+    "early_stop_patience": 3,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gaussian_noise_std": 0.02,
+    "brightness_jitter": 0.05
+  },
+  "acceptance": {
+    "minimum_shape_accuracy": 0.99,
+    "minimum_color_accuracy": 0.99,
+    "minimum_joint_accuracy": 0.99
+  }
+}
